@@ -1,9 +1,16 @@
+import { boredapi20_get_activity_read } from "./../../store/boredAPI/boredapi20_response_get_GetActivities.slice.js";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Text } from "react-native";
 import React from "react";
 import { View, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 
 const Untitled3 = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(boredapi20_get_activity_read());
+  }, []);
   const boredapi20_response_get_GetActivity = useSelector(state => state.boredapi20_response_get_GetActivity);
   return <SafeAreaView style={styles.safeArea}>
         <ScrollView contentContainerStyle={{
@@ -15,7 +22,7 @@ const Untitled3 = () => {
     }}>
         
           <View style={styles.column1}><Text style={styles.qJyexdZm}>An Activity Suggestion For You</Text></View>
-          <View style={styles.column2}><Text style={styles.FZYairKB}>{boredapi20_response_get_GetActivity[0].activity}</Text></View>
+          <View style={styles.column2}><Text style={styles.FZYairKB}>{boredapi20_response_get_GetActivity.activity}</Text></View>
           
         
         </ScrollView>
